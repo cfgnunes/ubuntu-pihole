@@ -1,0 +1,96 @@
+#!/usr/bin/env bash
+
+# Script to install and configure my pihole server on a Ubuntu 22.04 distro
+#
+# Author: Cristiano Fraga G. Nunes <cfgnunes@gmail.com>
+
+set -e
+
+SCRIPT_NAME=$(basename "$0")
+
+_main() {
+    _run_as_sudo
+
+    # Setting the time zone
+    dpkg-reconfigure tzdata
+
+    # Update distro and remove some desnecessary packages
+    apt-get -y purge snapd
+    apt-get update
+    apt-get -y full-upgrade
+    apt-get -y install sqlite3
+
+    # Install pi-hole
+    wget -O basic-install.sh https://install.pi-hole.net
+    PIHOLE_SKIP_OS_CHECK=true bash basic-install.sh
+
+    # Set the list of DNS servers
+    cp hosts /etc/pihole/dns-servers.conf
+    chown root:root /etc/pihole/dns-servers.conf
+    chmod 644 /etc/pihole/dns-servers.conf
+
+    # Add some URLs in the adlists
+    while read -r list; do
+        sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$list\", 1);"
+    done <"adlists.list"
+
+    # Ignored lists due problems
+    # https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
+    # https://v.firebog.net/hosts/Prigent-Ads.txt
+    # https://block.energized.pro/unified/formats/hosts.txt
+
+    # Install my script for enabling/disabling distracting websites
+    cp pihole-distractions.sh /usr/local/bin/pihole-distractions.sh
+    chown root:root /usr/local/bin/pihole-distractions.sh
+    chmod 755 /usr/local/bin/pihole-distractions.sh
+
+    # Set my rules on crontab (automatize the blacklist)
+    cp crontab /etc/crontab
+    chown root:root /etc/crontab
+    chmod 644 /etc/crontab
+
+    # Fix the hosts file
+    cp hosts /etc/hosts
+    chown root:root /etc/hosts
+    chmod 644 /etc/hosts
+
+    # Set some URLs in whitelist
+    pihole -w ad.doubleclick.net
+    pihole -w clickserve.dartsearch.net
+    pihole -w www.googleadservices.com
+    pihole -w find.api.micloud.xiaomi.net
+    pihole -w fonts.gstatic.com
+    pihole -w track.aliexpress.com
+
+    apt-get autoremove --purge
+    apt-get clean
+}
+
+_log() {
+    local STR_MESSAGE=$1
+
+    logger -s "[$SCRIPT_NAME] $STR_MESSAGE"
+}
+
+_get_command_path() {
+    local COMMAND=$1
+    local COMMAND_PATH
+
+    COMMAND_PATH=$(command -v "$COMMAND") &>/dev/null || true
+    echo "$COMMAND_PATH"
+}
+
+_run_as_sudo() {
+    if ((EUID != 0)); then
+        if [ -n "$(_get_command_path 'sudo')" ]; then
+            sudo --preserve-env "$0"
+        elif [ -n "$(_get_command_path 'gksu')" ]; then
+            gksu --preserve-env "$0"
+        else
+            _log "You must run $SCRIPT_NAME as root."
+        fi
+        exit 1
+    fi
+}
+
+_main "$@"
