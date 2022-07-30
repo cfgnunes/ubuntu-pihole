@@ -40,6 +40,9 @@ _main() {
     chown root:root /etc/pihole/adlists.list
     chmod 644 /etc/pihole/adlists.list
 
+    _log "Updating gravity list..."
+    pihole -g
+
     # Ignored lists due problems
     # https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
     # https://v.firebog.net/hosts/Prigent-Ads.txt
