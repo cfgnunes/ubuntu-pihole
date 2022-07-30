@@ -1,4 +1,4 @@
-# Personal Ubuntu Server with Pi-hole: install and config
+# Personal Ubuntu Server with Pi-hole
 
 Script to install and configure my personal [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) with [Pi-hole](https://pi-hole.net) inside a Raspberry Pi hardware.
 
