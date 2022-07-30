@@ -1,8 +1,8 @@
 # Personal Ubuntu Server with Pi-hole
 
-Scripts to install and configure my personal [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) with [Pi-hole](https://pi-hole.net) inside a Raspberry Pi hardware.
+Script to install and configure my personal [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) with [Pi-hole](https://pi-hole.net) inside a Raspberry Pi hardware.
 
-This script:
+The script do:
 
 - Configure the time zone;
 - Update distro packages and remove unnecessary ones;
