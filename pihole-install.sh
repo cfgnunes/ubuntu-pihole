@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Script to install and configure my Ubuntu Server with the Pi-hole
+# Script to install and configure my personal Ubuntu Server with Pi-hole
 #
 # Author: Cristiano Fraga G. Nunes <cfgnunes@gmail.com>
 
