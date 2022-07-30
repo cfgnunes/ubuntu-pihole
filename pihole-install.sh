@@ -14,7 +14,7 @@ _main() {
     _log "Setting the time zone..."
     dpkg-reconfigure tzdata
 
-    _log "Updating distro packages and removing some desnecessary packages..."
+    _log "Updating distro packages and removing some unnecessary packages..."
     apt-get -y purge snapd
     apt-get update
     apt-get -y full-upgrade
@@ -36,6 +36,9 @@ _main() {
     while read -r LINE; do
         sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$LINE\", 1);"
     done <"adlists.list"
+
+    _log "Updating gravity list..."
+    pihole -g
 
     # Ignored lists due problems
     # https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
