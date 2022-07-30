@@ -12,7 +12,7 @@ The script does:
 - Install a script to automatically disable distracting websites during workdays;
 - Fix some errors in the Ubuntu Server distro for Raspberry Pi.
 
-This project is for personal use, but it can help you to personalize your Ubuntu Server for Ad blocking.
+This project is for personal use, but it can help you to customize your Ubuntu Server for Ad blocking.
 
 ## Getting Started
 
