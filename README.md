@@ -5,10 +5,10 @@ Script to install and configure my [Ubuntu Server](https://ubuntu.com/download/r
 This script:
 
 - Configure the time zone;
-- Updating distro packages and remove unnecessary packages;
-- Install Pi-hole;
+- Update distro packages and remove unnecessary ones;
+- Install the Pi-hole;
 - Add some DNS servers;
-- Add some important AdBlock lists;
+- Add important AdBlock lists;
 - Install a script to automatically disable distracting websites during workdays;
 - Fix some errors in the Ubuntu Server distro for Raspberry Pi.
 
