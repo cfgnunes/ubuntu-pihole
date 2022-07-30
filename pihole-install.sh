@@ -11,7 +11,7 @@ SCRIPT_NAME=$(basename "$0")
 _main() {
     _run_as_sudo
 
-    _log "Installing Insync..."
+    _log "Setting the time zone..."
     dpkg-reconfigure tzdata
 
     _log "Updating distro packages and removing some desnecessary packages..."
@@ -33,8 +33,8 @@ _main() {
     chmod 644 /etc/pihole/dns-servers.conf
 
     _log "Setting the file 'dns-servers.conf'..."
-    while read -r list; do
-        sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$list\", 1);"
+    while read -r LINE; do
+        sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$LINE\", 1);"
     done <"adlists.list"
 
     # Ignored lists due problems
@@ -58,12 +58,9 @@ _main() {
     chmod 644 /etc/hosts
 
     # Set some URLs in whitelist
-    pihole -w ad.doubleclick.net
-    pihole -w clickserve.dartsearch.net
-    pihole -w www.googleadservices.com
-    pihole -w find.api.micloud.xiaomi.net
-    pihole -w fonts.gstatic.com
-    pihole -w track.aliexpress.com
+    while read -r LINE; do
+        pihole -w "$LINE"
+    done <"whitelist.list"
 
     apt-get autoremove --purge
     apt-get clean
