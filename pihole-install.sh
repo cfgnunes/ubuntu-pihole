@@ -28,7 +28,7 @@ _main() {
     set -"$BACKUP_FLAGS"
 
     _log "Setting the file 'dns-servers.conf'..."
-    cp hosts /etc/pihole/dns-servers.conf
+    cp dns-servers.conf /etc/pihole/dns-servers.conf
     chown root:root /etc/pihole/dns-servers.conf
     chmod 644 /etc/pihole/dns-servers.conf
 
@@ -36,7 +36,7 @@ _main() {
     #while read -r LINE; do
     #    sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$LINE\", 1);"
     #done <"adlists.list"
-    cp hosts /etc/pihole/adlists.list
+    cp adlists.list /etc/pihole/adlists.list
     chown root:root /etc/pihole/adlists.list
     chmod 644 /etc/pihole/adlists.list
 
