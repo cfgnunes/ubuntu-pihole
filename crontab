@@ -25,7 +25,7 @@ SHELL=/bin/sh
 # Libera distrações aos finais de semana
 05 06   * * 6-7 root    /usr/local/bin/pihole-distractions.sh -d
 
-# Libera distrações somente após às 18h
+# Libera distrações somente após às 18h em dias de semana
 51 17   * * 1-5 root    /usr/local/bin/pihole-distractions.sh -d
 51 22   * * 1-5 root    /usr/local/bin/pihole-distractions.sh
 
