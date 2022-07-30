@@ -1,6 +1,6 @@
 # Ubuntu Server and Pi-hole: install and config
 
-Script to install and configure my [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) with the [Pi-hole](https://pi-hole.net) inside a Raspberry Pi.
+Script to install and configure my personal [Ubuntu Server](https://ubuntu.com/download/raspberry-pi) with the [Pi-hole](https://pi-hole.net) inside a Raspberry Pi.
 
 This script:
 
