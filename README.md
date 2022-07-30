@@ -19,5 +19,5 @@ This project is for personal use, but it can help you to personalize your Ubuntu
 Just run:
 
 ```sh
-    pihole-install.sh
+    ./pihole-install.sh
 ```
