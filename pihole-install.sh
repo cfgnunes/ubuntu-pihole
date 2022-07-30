@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
 
-# Script to install and configure my pihole server on a Ubuntu 22.04 distro
+# Script to install and configure my pihole server
 #
 # Author: Cristiano Fraga G. Nunes <cfgnunes@gmail.com>
 
