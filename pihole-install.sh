@@ -11,25 +11,25 @@ SCRIPT_NAME=$(basename "$0")
 _main() {
     _run_as_sudo
 
-    # Setting the time zone
+    _log "Installing Insync..."
     dpkg-reconfigure tzdata
 
-    # Update distro and remove some desnecessary packages
+    _log "Updating distro packages and removing some desnecessary packages..."
     apt-get -y purge snapd
     apt-get update
     apt-get -y full-upgrade
     apt-get -y install sqlite3
 
-    # Install pi-hole
+    _log "Installing pi-hole..."
     wget -O basic-install.sh https://install.pi-hole.net
     PIHOLE_SKIP_OS_CHECK=true bash basic-install.sh
 
-    # Set the list of DNS servers
+    _log "Setting the file 'dns-servers.conf'..."
     cp hosts /etc/pihole/dns-servers.conf
     chown root:root /etc/pihole/dns-servers.conf
     chmod 644 /etc/pihole/dns-servers.conf
 
-    # Add some URLs in the adlists
+    _log "Setting the file 'dns-servers.conf'..."
     while read -r list; do
         sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$list\", 1);"
     done <"adlists.list"
@@ -39,17 +39,17 @@ _main() {
     # https://v.firebog.net/hosts/Prigent-Ads.txt
     # https://block.energized.pro/unified/formats/hosts.txt
 
-    # Install my script for enabling/disabling distracting websites
+    _log "Installing the script 'pihole-distractions.sh'..."
     cp pihole-distractions.sh /usr/local/bin/pihole-distractions.sh
     chown root:root /usr/local/bin/pihole-distractions.sh
     chmod 755 /usr/local/bin/pihole-distractions.sh
 
-    # Set my rules on crontab (automatize the blacklist)
+    _log "Setting the file 'crontab' (automatize the blacklist)..."
     cp crontab /etc/crontab
     chown root:root /etc/crontab
     chmod 644 /etc/crontab
 
-    # Fix the hosts file
+    _log "Setting the file 'hosts' (automatize the blacklist)..."
     cp hosts /etc/hosts
     chown root:root /etc/hosts
     chmod 644 /etc/hosts
@@ -78,6 +78,12 @@ _get_command_path() {
 
     COMMAND_PATH=$(command -v "$COMMAND") &>/dev/null || true
     echo "$COMMAND_PATH"
+}
+
+_log() {
+    local STR_MESSAGE=$1
+
+    logger -s "[$SCRIPT_NAME] $STR_MESSAGE"
 }
 
 _run_as_sudo() {
