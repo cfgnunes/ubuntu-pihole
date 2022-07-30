@@ -1,10 +1,10 @@
 #!/usr/bin/env bash
 
-# Script to install and configure my pihole server
+# Script to install and configure my Pi-hole server
 #
 # Author: Cristiano Fraga G. Nunes <cfgnunes@gmail.com>
 
-set -e
+set -eu
 
 SCRIPT_NAME=$(basename "$0")
 
@@ -20,9 +20,12 @@ _main() {
     apt-get -y full-upgrade
     apt-get -y install sqlite3
 
-    _log "Installing pi-hole..."
+    _log "Installing Pi-hole..."
+    local BACKUP_FLAGS=$-
+    set +u
     wget -O basic-install.sh https://install.pi-hole.net
     PIHOLE_SKIP_OS_CHECK=true bash basic-install.sh
+    set -"$BACKUP_FLAGS"
 
     _log "Setting the file 'dns-servers.conf'..."
     cp hosts /etc/pihole/dns-servers.conf
