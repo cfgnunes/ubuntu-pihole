@@ -33,15 +33,9 @@ _main() {
     chmod 644 /etc/pihole/dns-servers.conf
 
     _log "Setting the file 'adlists.list'..."
-    #while read -r LINE; do
-    #    sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$LINE\", 1);"
-    #done <"adlists.list"
-    cp adlists.list /etc/pihole/adlists.list
-    chown root:root /etc/pihole/adlists.list
-    chmod 644 /etc/pihole/adlists.list
-
-    _log "Updating gravity list..."
-    pihole -g
+    while read -r LINE; do
+        sqlite3 /etc/pihole/gravity.db "insert or ignore into adlist (address, enabled) values (\"$LINE\", 1);"
+    done <"adlists.list"
 
     # Ignored lists due problems
     # https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
@@ -58,7 +52,7 @@ _main() {
     chown root:root /etc/crontab
     chmod 644 /etc/crontab
 
-    _log "Setting the file 'hosts' (automatize the blacklist)..."
+    _log "Setting the file 'hosts'..."
     cp hosts /etc/hosts
     chown root:root /etc/hosts
     chmod 644 /etc/hosts
