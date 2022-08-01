@@ -103,7 +103,6 @@ _main() {
         "*recode.net*" \
         "*reddit*" \
         "*rottentomatoes.com*" \
-        "*skoob*" \
         "*slashdot.org*" \
         "*snapchat*" \
         "*soundcloud.com*" \
