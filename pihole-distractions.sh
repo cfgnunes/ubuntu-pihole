@@ -56,6 +56,7 @@ _main() {
         "*facebook*" \
         "*fark.com*" \
         "*fbcdn*" \
+        "*fbsbx*" \
         "*flickr*" \
         "*forbes.com*" \
         "*foxnews.com*" \
