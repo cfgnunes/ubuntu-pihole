@@ -1,6 +1,5 @@
 http://someonewhocares.org/hosts/hosts
 http://sysctl.org/cameleon/hosts
-http://www.joewein.net/dl/bl/dom-bl.txt
 https://adaway.org/hosts.txt
 https://bitbucket.org/ethanr/dns-blacklists/raw/8575c9f96e5b4a1308f2f12394abd86d0927a4a0/bad_lists/Mandiant_APT1_Report_Appendix_D.txt
 https://gist.githubusercontent.com/anudeepND/adac7982307fec6ee23605e281a57f1a/raw/5b8582b906a9497624c3f3187a49ebc23a9cf2fb/Test.txt
@@ -12,7 +11,6 @@ https://justdomains.github.io/blocklists/lists/easylist-justdomains.txt
 https://justdomains.github.io/blocklists/lists/easyprivacy-justdomains.txt
 https://justdomains.github.io/blocklists/lists/nocoin-justdomains.txt
 https://osint.digitalside.it/Threat-Intel/lists/latestdomains.txt
-https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts;showintro=0
 https://phishing.army/download/phishing_army_blocklist_extended.txt
 https://raw.githubusercontent.com/anudeepND/blacklist/master/adservers.txt
 https://raw.githubusercontent.com/bigdargon/hostsVN/master/hosts
@@ -40,6 +38,4 @@ https://v.firebog.net/hosts/Prigent-Phishing.txt
 https://v.firebog.net/hosts/Shalla-mal.txt
 https://v.firebog.net/hosts/static/SamsungSmart.txt
 https://v.firebog.net/hosts/static/w3kbl.txt
-https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
-https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt
 https://zerodot1.gitlab.io/CoinBlockerLists/hosts
