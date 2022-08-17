@@ -11,21 +11,6 @@ SCRIPT_NAME=$(basename "$0")
 _main() {
     _log "Starting..."
 
-    # (shopping)
-    #pihole --regex "$@" \
-    #    "*aliexpress.com*" \
-    #    "*amazon.com*" \
-    #    "*americanas.com.br*" \
-    #    "*centauro.com.br*" \
-    #    "*ebay.com*" \
-    #    "*gsuplementos.com.br*" \
-    #    "*kalunga.com.br*" \
-    #    "*magazineluiza.com.br*" \
-    #    "*mercadolivre.com.br*" \
-    #    "*netshoes.com.br*" \
-    #    "*olx.com.br*" \
-    #    "*shopee.com.br*"
-
     # (entertainment, social, news, memes)
     pihole --regex "$@" \
         "*4chan*" \
