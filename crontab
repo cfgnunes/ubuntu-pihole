@@ -26,5 +26,5 @@ SHELL=/bin/sh
 05 06   * * 1-5 root    /usr/local/bin/pihole-distractions.sh
 59 17   * * 1-5 root    /usr/local/bin/pihole-distractions.sh -d
 
-# Desliga o dispositivo às 23h (antes do timer físico acionar o desligamento)
-55 22   * * *   root    bash -c "shutdown -h now"
+# Desliga o dispositivo às 0h (antes do timer físico acionar o desligamento)
+55 23   * * *   root    bash -c "shutdown -h now"
