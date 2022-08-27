@@ -29,7 +29,7 @@ _main() {
     _log "Removing unused packages..."
     sudo apt-get -y autoremove --purge
 
-    _log "Updating pihole..."
+    _log "Updating Pi-hole..."
     local BACKUP_FLAGS=$-
     set +u
     pihole -up
