@@ -54,6 +54,11 @@ _main() {
     chown root:root /usr/local/bin/pihole-distractions.sh
     chmod 755 /usr/local/bin/pihole-distractions.sh
 
+    _log "Installing the script 'update-system.sh'..."
+    cp update-system.sh /usr/local/bin/update-system.sh
+    chown root:root /usr/local/bin/update-system.sh
+    chmod 755 /usr/local/bin/update-system.sh
+
     _log "Setting the file 'crontab' (automatize the blacklist)..."
     cp crontab /etc/crontab
     chown root:root /etc/crontab
