@@ -49,15 +49,15 @@ _main() {
     # https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
     # https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt
 
-    _log "Installing the script 'pihole-distractions.sh'..."
-    cp pihole-distractions.sh /usr/local/bin/pihole-distractions.sh
-    chown root:root /usr/local/bin/pihole-distractions.sh
-    chmod 755 /usr/local/bin/pihole-distractions.sh
+    _log "Installing the script ',pihole-distractions.sh'..."
+    cp ,pihole-distractions.sh /usr/local/bin/,pihole-distractions.sh
+    chown root:root /usr/local/bin/,pihole-distractions.sh
+    chmod 755 /usr/local/bin/,pihole-distractions.sh
 
-    _log "Installing the script 'update-system.sh'..."
-    cp update-system.sh /usr/local/bin/update-system.sh
-    chown root:root /usr/local/bin/update-system.sh
-    chmod 755 /usr/local/bin/update-system.sh
+    _log "Installing the script ',update-system.sh'..."
+    cp ,update-system.sh /usr/local/bin/,update-system.sh
+    chown root:root /usr/local/bin/,update-system.sh
+    chmod 755 /usr/local/bin/,update-system.sh
 
     _log "Setting the file 'crontab' (automatize the blacklist)..."
     cp crontab /etc/crontab
