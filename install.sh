@@ -40,15 +40,6 @@ _main() {
     _log "Updating gravity list..."
     pihole -g
 
-    # Ignored lists due problems
-    # http://www.joewein.net/dl/bl/dom-bl.txt
-    # https://block.energized.pro/unified/formats/hosts.txt
-    # https://pgl.yoyo.org/adservers/serverlist.php?hostformat=hosts;showintro=0
-    # https://raw.githubusercontent.com/jerryn70/GoodbyeAds/master/Hosts/GoodbyeAds.txt
-    # https://v.firebog.net/hosts/Prigent-Ads.txt
-    # https://www.github.developerdan.com/hosts/lists/ads-and-tracking-extended.txt
-    # https://www.github.developerdan.com/hosts/lists/hate-and-junk-extended.txt
-
     _log "Installing the script ',pihole-distractions.sh'..."
     cp ,pihole-distractions.sh /usr/local/bin/,pihole-distractions.sh
     chown root:root /usr/local/bin/,pihole-distractions.sh
