@@ -11,17 +11,11 @@ SCRIPT_NAME=$(basename "$0")
 _main() {
     sudo echo >/dev/null
 
-    #_log "Updating and installing snap packages..."
-    #sudo snap refresh
-
     _log "Updating apt list..."
     sudo apt-get update
 
     _log "Upgrading apt packages..."
     sudo apt-get -y full-upgrade
-
-    #_log "Updating and installing Ubuntu drivers..."
-    #sudo ubuntu-drivers install
 
     _log "Removing residual configs..."
     dpkg -l | grep '^rc' | awk '{print $2}' | xargs sudo apt-get -y purge
