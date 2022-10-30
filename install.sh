@@ -83,22 +83,17 @@ _get_command_path() {
     echo "$COMMAND_PATH"
 }
 
-_log() {
-    local MESSAGE=$1
-
-    logger -s "[$SCRIPT_NAME] $MESSAGE"
-}
-
 _run_as_sudo() {
     if ((EUID != 0)); then
-        if [ -n "$(_get_command_path 'sudo')" ]; then
+        if [[ -n "$(_get_command_path 'sudo')" ]]; then
             sudo --preserve-env "$0"
-        elif [ -n "$(_get_command_path 'gksu')" ]; then
+        elif [[ -n "$(_get_command_path 'gksu')" ]]; then
             gksu --preserve-env "$0"
         else
-            _log "You must run $SCRIPT_NAME as root."
+            _log "You must run the script as root."
+            exit 1
         fi
-        exit 1
+        exit 0
     fi
 }
 
