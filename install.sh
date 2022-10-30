@@ -70,9 +70,9 @@ _main() {
 }
 
 _log() {
-    local STR_MESSAGE=$1
+    local MESSAGE=$1
 
-    logger -s "[$SCRIPT_NAME] $STR_MESSAGE"
+    logger -s "[$SCRIPT_NAME] $MESSAGE"
 }
 
 _get_command_path() {
@@ -84,9 +84,9 @@ _get_command_path() {
 }
 
 _log() {
-    local STR_MESSAGE=$1
+    local MESSAGE=$1
 
-    logger -s "[$SCRIPT_NAME] $STR_MESSAGE"
+    logger -s "[$SCRIPT_NAME] $MESSAGE"
 }
 
 _run_as_sudo() {
